@@ -12,9 +12,11 @@
     <div class="container">
         <nav>
             <a onclick="reRender()" id="home">HOME</a>
-            <a onclick="darkMode()" id="mode">MODE</a>
+            <a onclick="darkMode()" id="dark">MODE-DARK</a>
+            <a onclick="blueMode()" id="blue">MODE-BLUE</a>
+            <a onclick="redMode()" id="red">MODE-RED</a>
         </nav>
-        <h1>SESI 6</h1>
+        <h1>MODE</h1>
         <p class="info" id="info"></p>
 
     </div>
@@ -23,18 +25,28 @@
     <script>
         let body = document.body;
         let info = document.getElementById("info")
-        let mode = document.getElementById("mode")
+        let dark = document.getElementById("dark")
+        let blue = document.getElementById("blue")
+        let red = document.getElementById("red")
         let home = document.getElementById("home")
 
         const darkLimit = 5;
         let darkCounter = 0;
         let darkRemainingLeft;
 
+        const blueLimit = 5;
+        let blueCounter = 0;
+        let blueRemainingLeft;
+
+        const redLimit = 5;
+        let redCounter = 0;
+        let redRemainingLeft;
+
 
         function darkMode() {
             if (darkRemainingLeft == 1) {
                 info.textContent = "Jatah Fitur Dark Mode Anda Sudah Habis";
-                mode.style.display = "none";
+                dark.style.display = "none";
                 home.textContent = 'RESTART';
                 return;
             }
@@ -44,6 +56,36 @@
             // render ke info element
             info.textContent = `Darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`
             body.classList.toggle("dark");
+        }
+
+        function blueMode() {
+            if (blueRemainingLeft == 1) {
+                info.textContent = "Jatah Fitur Blue Mode Anda Sudah Habis";
+                blue.style.display = "none";
+                home.textContent = 'RESTART';
+                return;
+            }
+            blueCounter += 1;
+            blueRemainingLeft = blueLimit - blueCounter;
+
+            // render ke info element
+            info.textContent = `Bluemode dipakai ${blueCounter}x, tersisa ${blueRemainingLeft}`
+            body.classList.toggle("blue");
+        }
+
+        function redMode() {
+            if (redRemainingLeft == 1) {
+                info.textContent = "Jatah Fitur Blue Mode Anda Sudah Habis";
+                red.style.display = "none";
+                home.textContent = 'RESTART';
+                return;
+            }
+            redCounter += 1;
+            redRemainingLeft = redLimit - redCounter;
+
+            // render ke info element
+            info.textContent = `Redmode dipakai ${redCounter}x, tersisa ${redRemainingLeft}`
+            body.classList.toggle("red");
         }
 
         function reRender() {
