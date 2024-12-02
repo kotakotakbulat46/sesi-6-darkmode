@@ -1,1 +1,1 @@
-# sesi-6-darkmode
+# sesi-6-mode
